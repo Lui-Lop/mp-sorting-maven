@@ -1,5 +1,6 @@
 package edu.grinnell.csc207.sorting;
 
+import java.util.Arrays;
 import java.util.Comparator;
 
 /**
@@ -55,6 +56,57 @@ public class MergeSorter<T> implements Sorter<T> {
    */
   @Override
   public void sort(T[] values) {
-    // STUB
+    int rightArrStart = values.length / 2;
+    
+    T[] left = Arrays.copyOfRange(values, 0, rightArrStart);
+    T[] right = Arrays.copyOfRange(values, rightArrStart, values.length);
+
+    if (left.length > 1) {
+      sort(left);
+    }
+    if (right.length > 1) {
+      sort(right);
+    }
+
+    int leftInd = 0;
+    int rightInd = 0;
+
+    for (int i = 0; i < values.length; i ++) {
+      if (leftInd >= left.length) {
+        values[i] = right[rightInd];
+        rightInd++;
+      } else if (rightInd >= right.length) {
+        values[i] = left[leftInd];
+        leftInd++;
+      } else if (order.compare(left[leftInd], right[rightInd]) > 0) {
+        values[i] = right[rightInd];
+        rightInd++;
+      } else if (order.compare(left[leftInd], right[rightInd]) < 0) {
+        values[i] = left[leftInd];
+        leftInd++;
+      } else if (order.compare(left[leftInd], right[rightInd]) == 0) {
+        values[i] = left[leftInd];
+        leftInd++;
+      }
+    }
+
+    // for (int i = 0; i < values.length; i++) {
+    //   if (leftInd >= left.length) {
+    //     values[i] = right[rightInd];
+    //     rightInd++;
+    //   } else if (rightInd >= right.length) {
+    //     values[i] = left[leftInd];
+    //     leftInd++;
+    //   } else if (order.compare(left[leftInd], right[rightInd]) < 0) {
+    //     values[i] = left[leftInd];
+    //     leftInd++;
+    //   } else if (order.compare(right[rightInd], left[leftInd]) > 0) {
+    //     values[i] = right[rightInd];
+    //     rightInd++;
+    //   } else if (order.compare(right[rightInd], left[leftInd]) == 0) {
+    //     values[i] = left[leftInd];
+    //     leftInd++;
+    //   }
+    // } 
   } // sort(T[])
 } // class MergeSorter
