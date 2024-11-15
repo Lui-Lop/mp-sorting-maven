@@ -9,6 +9,10 @@ Authors
 
 Acknowledgements
 
+* University of San Francisco California https://www.cs.usfca.edu/~cs272/javadoc/api/java.base/java/util/Arrays.html
+    copyOfRange method found from looking at utils for arrays
+* E-board 20 & 18
+    Help understand analysis of sorting methods
 * Si-Ho (Personal Tutor)
     explained the concept of Quicksort
 * Akash (CS Tutor)
@@ -20,7 +24,6 @@ Description of custom sorting algorithm
 ---------------------------------------
 
 Quicksort seems very efficient to sort out rough chunks of original array, but randomness in what pivot is could be bad. So maybe after a certain amount of quicksorting, enough to create subarrays of less than or equal to quarter in size, you should do insertion sort.
-
 
 Notes on using Copilot (or other AI)
 ------------------------------------
