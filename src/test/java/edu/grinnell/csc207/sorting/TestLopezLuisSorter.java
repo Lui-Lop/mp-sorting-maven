@@ -3,7 +3,7 @@ package edu.grinnell.csc207.sorting;
 import org.junit.jupiter.api.BeforeAll;
 
 /**
- * Tests of our InsertionSorter.
+ * Tests of our LopezLuisSort.
  */
 public class TestLopezLuisSorter extends TestSorter {
   /**
@@ -15,4 +15,4 @@ public class TestLopezLuisSorter extends TestSorter {
     intSorter = new LopezLuisSort<Integer>((x,y) -> x.compareTo(y));
   } // setup()
 
-} // class TestInsertionSorter
+} // class TestLopezLuisSorter
