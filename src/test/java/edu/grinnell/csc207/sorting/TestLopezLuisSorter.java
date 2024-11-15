@@ -11,8 +11,8 @@ public class TestLopezLuisSorter extends TestSorter {
    */
   @BeforeAll
   static void setup() {
-    stringSorter = new LopezLuisSort<String>((x,y) -> x.compareTo(y));
-    intSorter = new LopezLuisSort<Integer>((x,y) -> x.compareTo(y));
+    stringSorter = new LopezLuisSort<String>((x, y) -> x.compareTo(y));
+    intSorter = new LopezLuisSort<Integer>((x, y) -> x.compareTo(y));
   } // setup()
 
 } // class TestLopezLuisSorter
