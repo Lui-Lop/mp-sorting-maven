@@ -1,5 +1,6 @@
 package edu.grinnell.csc207.sorting;
 
+import java.util.Arrays;
 import java.util.Comparator;
 
 /**
@@ -41,6 +42,28 @@ public class Quicksorter<T> implements Sorter<T> {
   // +---------+
 
   /**
+   * Sort subarray and write back to main array 
+   *
+   * @param values
+   *    an array to sort subarray from
+   * @param lb
+   *    lower bound of the subarray
+   * @param ub
+   *    upper bound of subarray
+   * 
+   * @post
+   *    subarray is sorted
+   */
+  public void sortSub(T[] values, int lb, int ub) {
+    T[] subArr = Arrays.copyOfRange(values, lb, ub);
+    sort(subArr);
+    for (int i = 0; i < subArr.length; i++) {
+      values[lb] = subArr[i];
+      lb++;
+    }
+  } //sortSub
+
+  /**
    * Sort an array in place using Quicksort.
    *
    * @param values
@@ -55,6 +78,37 @@ public class Quicksorter<T> implements Sorter<T> {
    */
   @Override
   public void sort(T[] values) {
-    // STUB
+    if (values.length == 0) {
+      return;
+    }
+
+    T pivot = values[0];
+    int less = 0;
+    int equal = 0;
+    int greater = values.length - 1;
+
+    while (equal <= greater) {
+      if (order.compare(values[equal], pivot) > 0) {
+        T temp = values[equal];
+        values[equal] = values[greater];
+        values[greater] = temp;
+        greater--;
+      } else if (order.compare(values[equal], pivot) < 0) {
+        T temp = values[equal];
+        values[equal] = values[less];
+        values[less] = temp;
+        less++;
+        equal++;
+      } else if (order.compare(values[equal], pivot) == 0) {
+        equal++;
+      }
+    }
+
+    if (less > 1) {
+      sortSub(values, 0, less);
+    }
+    if (equal < values.length) {
+      sortSub(values, equal, values.length);
+    }
   } // sort(T[])
 } // class Quicksorter
