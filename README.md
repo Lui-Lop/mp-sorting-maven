@@ -19,8 +19,7 @@ This code may be found at <https://github.com/Lui-Lop/mp-sorting-maven.git>. The
 Description of custom sorting algorithm
 ---------------------------------------
 
-Quicksort seems very efficient to sort out rough chunks of original array, but randomness in what pivot is could be bad.
-So maybe after a certain amount of quicksorting you should just do insertion sort.
+Quicksort seems very efficient to sort out rough chunks of original array, but randomness in what pivot is could be bad. So maybe after a certain amount of quicksorting, enough to create subarrays of less than quarter in size, you should do insertion sort.
 
 
 Notes on using Copilot (or other AI)
