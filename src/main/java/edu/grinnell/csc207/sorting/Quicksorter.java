@@ -10,6 +10,7 @@ import java.util.Comparator;
  *   The types of values that are sorted.
  *
  * @author Samuel A. Rebelsky
+ * @author Luis Lopez
  */
 
 public class Quicksorter<T> implements Sorter<T> {
