@@ -42,7 +42,7 @@ public class Quicksorter<T> implements Sorter<T> {
   // +---------+
 
   /**
-   * Sort subarray and write back to main array 
+   * Sort subarray and write back to main array.
    *
    * @param values
    *    an array to sort subarray from
@@ -50,7 +50,7 @@ public class Quicksorter<T> implements Sorter<T> {
    *    lower bound of the subarray
    * @param ub
    *    upper bound of subarray
-   * 
+   *
    * @post
    *    subarray is sorted
    */
@@ -60,7 +60,7 @@ public class Quicksorter<T> implements Sorter<T> {
     for (int i = 0; i < subArr.length; i++) {
       values[lb] = subArr[i];
       lb++;
-    }
+    } // loop over subarray to copy to original array
   } //sortSub
 
   /**

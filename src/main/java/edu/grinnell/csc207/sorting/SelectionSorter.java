@@ -58,7 +58,7 @@ public class SelectionSorter<T> implements Sorter<T> {
     for (int i = 0; i < values.length; i++) {
       T temp = values[i];
       int lowestInd = i;
-      for(int j = i; j < values.length; j++) {
+      for (int j = i; j < values.length; j++) {
         if (order.compare(temp, values[j]) > 0) {
           temp = values[j];
           lowestInd = j;

@@ -57,7 +57,7 @@ public class MergeSorter<T> implements Sorter<T> {
   @Override
   public void sort(T[] values) {
     int rightArrStart = values.length / 2;
-    
+
     T[] left = Arrays.copyOfRange(values, 0, rightArrStart);
     T[] right = Arrays.copyOfRange(values, rightArrStart, values.length);
 
@@ -71,7 +71,7 @@ public class MergeSorter<T> implements Sorter<T> {
     int leftInd = 0;
     int rightInd = 0;
 
-    for (int i = 0; i < values.length; i ++) {
+    for (int i = 0; i < values.length; i++) {
       if (leftInd >= left.length) {
         values[i] = right[rightInd];
         rightInd++;
@@ -87,7 +87,8 @@ public class MergeSorter<T> implements Sorter<T> {
       } else if (order.compare(left[leftInd], right[rightInd]) == 0) {
         values[i] = left[leftInd];
         leftInd++;
-      } // checks if element in array is less than to copy to original array, or if only one array is left copies from there
+      } // checks if element in array is less than to copy to original array
+        // or if only one array is left copies from there
     } // loop over entire original array
   } // sort(T[])
 } // class MergeSorter
