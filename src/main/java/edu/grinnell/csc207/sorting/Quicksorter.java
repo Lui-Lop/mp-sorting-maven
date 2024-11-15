@@ -80,7 +80,7 @@ public class Quicksorter<T> implements Sorter<T> {
   public void sort(T[] values) {
     if (values.length == 0) {
       return;
-    }
+    } // if array passed is empty, just return
 
     T pivot = values[0];
     int less = 0;
@@ -101,14 +101,14 @@ public class Quicksorter<T> implements Sorter<T> {
         equal++;
       } else if (order.compare(values[equal], pivot) == 0) {
         equal++;
-      }
-    }
+      } // check current element to pivot, to swap and increment appropriately
+    } // loop until entire array is sorted based on pivot
 
     if (less > 1) {
       sortSub(values, 0, less);
-    }
+    } // if subarray bigger than one element, sort
     if (equal < values.length) {
       sortSub(values, equal, values.length);
-    }
+    } // if subarray bigger than one element, sort
   } // sort(T[])
 } // class Quicksorter

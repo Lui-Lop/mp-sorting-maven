@@ -62,9 +62,9 @@ public class InsertionSorter<T> implements Sorter<T> {
           T temp = values[j];
           values[j] = values[j - 1];
           values[j - 1] = temp;
-        }
-      }
+        } // checks if current value is smaller than previous
+      } // loop oveer unsorted part of array
       sorted++;
-    }
+    } // loops over entire array
   } // sort(T[])
 } // class InsertionSorter

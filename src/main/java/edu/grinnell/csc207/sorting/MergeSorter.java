@@ -63,10 +63,10 @@ public class MergeSorter<T> implements Sorter<T> {
 
     if (left.length > 1) {
       sort(left);
-    }
+    } // if subarray is bigger than one element, sort
     if (right.length > 1) {
       sort(right);
-    }
+    } // if subarray is bigger than one element, sort
 
     int leftInd = 0;
     int rightInd = 0;
@@ -87,26 +87,7 @@ public class MergeSorter<T> implements Sorter<T> {
       } else if (order.compare(left[leftInd], right[rightInd]) == 0) {
         values[i] = left[leftInd];
         leftInd++;
-      }
-    }
-
-    // for (int i = 0; i < values.length; i++) {
-    //   if (leftInd >= left.length) {
-    //     values[i] = right[rightInd];
-    //     rightInd++;
-    //   } else if (rightInd >= right.length) {
-    //     values[i] = left[leftInd];
-    //     leftInd++;
-    //   } else if (order.compare(left[leftInd], right[rightInd]) < 0) {
-    //     values[i] = left[leftInd];
-    //     leftInd++;
-    //   } else if (order.compare(right[rightInd], left[leftInd]) > 0) {
-    //     values[i] = right[rightInd];
-    //     rightInd++;
-    //   } else if (order.compare(right[rightInd], left[leftInd]) == 0) {
-    //     values[i] = left[leftInd];
-    //     leftInd++;
-    //   }
-    // } 
+      } // checks if element in array is less than to copy to original array, or if only one array is left copies from there
+    } // loop over entire original array
   } // sort(T[])
 } // class MergeSorter

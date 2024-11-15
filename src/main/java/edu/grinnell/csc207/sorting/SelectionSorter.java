@@ -62,10 +62,10 @@ public class SelectionSorter<T> implements Sorter<T> {
         if (order.compare(temp, values[j]) > 0) {
           temp = values[j];
           lowestInd = j;
-        }
-      }
+        } // if current element is less than temp, change temp to current element
+      } // loop over entire unsorted part of array to find smallest
       values[lowestInd] = values[i];
       values[i] = temp;
-    }
+    } // loop over entire aray to sort
   } // sort(T[])
 } // class SelectionSorter
