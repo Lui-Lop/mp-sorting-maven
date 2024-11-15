@@ -74,20 +74,15 @@ public class MergeSorter<T> implements Sorter<T> {
 
     for (int i = 0; i < values.length; i++) {
       if (leftInd >= left.length) {
-        values[i] = right[rightInd];
-        rightInd++;
+        values[i] = right[rightInd++];
       } else if (rightInd >= right.length) {
-        values[i] = left[leftInd];
-        leftInd++;
+        values[i] = left[leftInd++];
       } else if (order.compare(left[leftInd], right[rightInd]) > 0) {
-        values[i] = right[rightInd];
-        rightInd++;
+        values[i] = right[rightInd++];
       } else if (order.compare(left[leftInd], right[rightInd]) < 0) {
-        values[i] = left[leftInd];
-        leftInd++;
+        values[i] = left[leftInd++];
       } else if (order.compare(left[leftInd], right[rightInd]) == 0) {
-        values[i] = left[leftInd];
-        leftInd++;
+        values[i] = left[leftInd++];
       } // checks if element in array is less than to copy to original array
         // or if only one array is left copies from there
     } // loop over entire original array

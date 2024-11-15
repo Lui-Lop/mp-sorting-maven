@@ -92,8 +92,7 @@ public class LopezLuisSort<T> implements Sorter<T> {
       sort(subArr);
     } // checks sub array size to determine which sort method to use
     for (int i = 0; i < subArr.length; i++) {
-      values[lb] = subArr[i];
-      lb++;
+      values[lb++] = subArr[i];
     } // loop over subarray to copy to original array
   } // sortSub
 
@@ -125,14 +124,11 @@ public class LopezLuisSort<T> implements Sorter<T> {
       if (order.compare(values[equal], pivot) > 0) {
         T temp = values[equal];
         values[equal] = values[greater];
-        values[greater] = temp;
-        greater--;
+        values[greater--] = temp;
       } else if (order.compare(values[equal], pivot) < 0) {
         T temp = values[equal];
-        values[equal] = values[less];
-        values[less] = temp;
-        less++;
-        equal++;
+        values[equal++] = values[less];
+        values[less++] = temp;
       } else if (order.compare(values[equal], pivot) == 0) {
         equal++;
       } // check current element to pivot, to swap and increment appropriately

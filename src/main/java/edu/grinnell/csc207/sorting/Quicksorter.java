@@ -59,8 +59,7 @@ public class Quicksorter<T> implements Sorter<T> {
     T[] subArr = Arrays.copyOfRange(values, lb, ub);
     sort(subArr);
     for (int i = 0; i < subArr.length; i++) {
-      values[lb] = subArr[i];
-      lb++;
+      values[lb++] = subArr[i];
     } // loop over subarray to copy to original array
   } //sortSub
 
@@ -92,16 +91,12 @@ public class Quicksorter<T> implements Sorter<T> {
       if (order.compare(values[equal], pivot) > 0) {
         T temp = values[equal];
         values[equal] = values[greater];
-        values[greater] = temp;
-        greater--;
+        values[greater--] = temp;
       } else if (order.compare(values[equal], pivot) < 0) {
         T temp = values[equal];
-        values[equal] = values[less];
-        values[less] = temp;
-        less++;
-        equal++;
-      } else if (order.compare(values[equal], pivot) == 0) {
-        equal++;
+        values[equal++] = values[less];
+        values[less++] = temp;
+      } else if (order.compare(values[equal++], pivot) == 0) {
       } // check current element to pivot, to swap and increment appropriately
     } // loop until entire array is sorted based on pivot
 
