@@ -9,8 +9,6 @@ Authors
 
 Acknowledgements
 
-* University of San Francisco California https://www.cs.usfca.edu/~cs272/javadoc/api/java.base/java/util/Arrays.html
-    copyOfRange method found from looking at utils for arrays
 * E-board 20 & 18
     Help understand analysis of sorting methods
 * Si-Ho (Personal Tutor)
