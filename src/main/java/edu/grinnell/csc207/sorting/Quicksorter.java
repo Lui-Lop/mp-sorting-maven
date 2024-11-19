@@ -96,7 +96,8 @@ public class Quicksorter<T> implements Sorter<T> {
         T temp = values[equal];
         values[equal++] = values[less];
         values[less++] = temp;
-      } else if (order.compare(values[equal++], pivot) == 0) {
+      } else if (order.compare(values[equal], pivot) == 0) {
+        equal++;
       } // check current element to pivot, to swap and increment appropriately
     } // loop until entire array is sorted based on pivot
 
