@@ -60,20 +60,20 @@ public class Quicksorter<T> implements Sorter<T> {
   } // sort(T[])
 
   /**
-   * Sorts the portion of the array in place using Quicksort
-   * to help sort(T[]).
+   * Puts values based on a pivot into subarrays,
+   * one for less than pivot, one for equal to pivot, one for greater than pivot.
    *
    * @param values
-   *               origional array where portion is being taken from
+   *               original array values for partition are from
    * @param lb
-   *               lower bound, inclusive
+   *               lowerbound of subarray partition will be done on, inclusive
    * @param ub
-   *               upper bound, exclusive
+   *               upperbound of subarray partition will be done on, exclusive
+   * @return
+   *         an array of integer that are used as bounds for the next partition
    */
-  public void sorter(T[] values, int lb, int ub) {
-    if (ub == lb) {
-      return;
-    } // if array passed is empty, just return
+  public int[] partition(T[] values, int lb, int ub) {
+    int[] bounds = new int[2];
 
     T pivot = values[lb];
     int less = lb;
@@ -93,6 +93,35 @@ public class Quicksorter<T> implements Sorter<T> {
         equal++;
       } // check current element to pivot, to swap and increment appropriately
     } // loop until entire array is sorted based on pivot
+
+    bounds[0] = less;
+    bounds[1] = equal;
+    //sets indices in array to bounds we need for next call of partition
+    return bounds;
+  } // partition
+
+  /**
+   * Sorts the portion of the array in place using Quicksort
+   * to help sort(T[]).
+   *
+   * @param values
+   *               origional array where portion is being taken from
+   * @param lb
+   *               lower bound, inclusive
+   * @param ub
+   *               upper bound, exclusive
+   */
+  public void sorter(T[] values, int lb, int ub) {
+    if (ub == lb) {
+      return;
+    } // if subarray is one element just return
+
+    int[] bounds = new int[2];
+    bounds = partition(values, lb, ub);
+    int less = bounds[0];
+    //sets a bound for next call to sorter
+    int equal = bounds[1];
+    //sets a boundn for next call to sorter
 
     if (less > 1) {
       sorter(values, lb, less);
