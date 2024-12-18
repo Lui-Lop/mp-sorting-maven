@@ -1,13 +1,12 @@
 package edu.grinnell.csc207.sorting;
 
-import java.util.Arrays;
 import java.util.Comparator;
 
 /**
  * Something that sorts using Quicksort.
  *
  * @param <T>
- *   The types of values that are sorted.
+ *            The types of values that are sorted.
  *
  * @author Samuel A. Rebelsky
  * @author Luis Lopez
@@ -31,8 +30,8 @@ public class Quicksorter<T> implements Sorter<T> {
    * Create a sorter using a particular comparator.
    *
    * @param comparator
-   *   The order in which elements in the array should be ordered
-   *   after sorting.
+   *                   The order in which elements in the array should be ordered
+   *                   after sorting.
    */
   public Quicksorter(Comparator<? super T> comparator) {
     this.order = comparator;
@@ -43,49 +42,43 @@ public class Quicksorter<T> implements Sorter<T> {
   // +---------+
 
   /**
-   * Sort subarray and write back to main array.
-   *
-   * @param values
-   *    an array to sort subarray from
-   * @param lb
-   *    lower bound of the subarray
-   * @param ub
-   *    upper bound of subarray
-   *
-   * @post
-   *    subarray is sorted
-   */
-  public void sortSub(T[] values, int lb, int ub) {
-    T[] subArr = Arrays.copyOfRange(values, lb, ub);
-    sort(subArr);
-    for (int i = 0; i < subArr.length; i++) {
-      values[lb++] = subArr[i];
-    } // loop over subarray to copy to original array
-  } //sortSub
-
-  /**
    * Sort an array in place using Quicksort.
    *
    * @param values
-   *   an array to sort.
+   *               an array to sort.
    *
    * @post
-   *   The array has been sorted according to some order (often
-   *   one given to the constructor).
+   *       The array has been sorted according to some order (often
+   *       one given to the constructor).
    * @post
-   *   For all i, 0 &lt; i &lt; values.length,
-   *     order.compare(values[i-1], values[i]) &lt;= 0
+   *       For all i, 0 &lt; i &lt; values.length,
+   *       order.compare(values[i-1], values[i]) &lt;= 0
    */
   @Override
   public void sort(T[] values) {
-    if (values.length == 0) {
+    sorter(values, 0, values.length);
+  } // sort(T[])
+
+  /**
+   * Sorts the portion of the array in place using Quicksort
+   * to help sort(T[]).
+   *
+   * @param values
+   *               origional array where portion is being taken from
+   * @param lb
+   *               lower bound, inclusive
+   * @param ub
+   *               upper bound, exclusive
+   */
+  public void sorter(T[] values, int lb, int ub) {
+    if (ub == lb) {
       return;
     } // if array passed is empty, just return
 
-    T pivot = values[0];
-    int less = 0;
-    int equal = 0;
-    int greater = values.length - 1;
+    T pivot = values[lb];
+    int less = lb;
+    int equal = lb;
+    int greater = ub - 1;
 
     while (equal <= greater) {
       if (order.compare(values[equal], pivot) > 0) {
@@ -102,10 +95,10 @@ public class Quicksorter<T> implements Sorter<T> {
     } // loop until entire array is sorted based on pivot
 
     if (less > 1) {
-      sortSub(values, 0, less);
+      sorter(values, lb, less);
     } // if subarray bigger than one element, sort
-    if (equal < values.length) {
-      sortSub(values, equal, values.length);
+    if (equal < ub) {
+      sorter(values, equal, ub);
     } // if subarray bigger than one element, sort
-  } // sort(T[])
+  } // sorter(T[], int, int)
 } // class Quicksorter
