@@ -121,7 +121,7 @@ public class Quicksorter<T> implements Sorter<T> {
     int less = bounds[0];
     //sets a bound for next call to sorter
     int equal = bounds[1];
-    //sets a boundn for next call to sorter
+    //sets a bound for next call to sorter
 
     if (less > 1) {
       sorter(values, lb, less);
