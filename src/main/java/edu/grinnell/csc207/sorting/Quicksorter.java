@@ -114,7 +114,7 @@ public class Quicksorter<T> implements Sorter<T> {
   public void sorter(T[] values, int lb, int ub) {
     if (ub == lb) {
       return;
-    } // if subarray is one element just return
+    }  // bounds are the same, empty subarray
 
     int[] bounds = new int[2];
     bounds = partition(values, lb, ub);
